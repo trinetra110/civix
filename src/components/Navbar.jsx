@@ -22,7 +22,7 @@ const Navbar = ({ navigate }) => {
             </div>
             <h1 className="text-xl font-bold">Civix</h1>
           </div>
-          
+
           <div className="flex items-center space-x-1">
             <button
               onClick={() => navigate("/")}
@@ -31,7 +31,7 @@ const Navbar = ({ navigate }) => {
               <Home size={18} />
               <span className="hidden sm:inline">Home</span>
             </button>
-            
+
             {user ? (
               <>
                 <button
@@ -41,12 +41,12 @@ const Navbar = ({ navigate }) => {
                   <LayoutDashboard size={18} />
                   <span className="hidden sm:inline">Dashboard</span>
                 </button>
-                
+
                 <div className="flex items-center space-x-2 px-3 py-2 bg-blue-500/20 rounded-lg">
                   <User size={18} />
                   <span className="hidden sm:inline text-sm">{user.name}</span>
                 </div>
-                
+
                 <button
                   onClick={handleLogout}
                   className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-red-500/20 transition-colors text-red-100 hover:text-red-50"

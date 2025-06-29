@@ -6,29 +6,33 @@ const Home = ({ navigate }) => {
     {
       icon: <Shield className="w-8 h-8 text-blue-600" />,
       title: "Secure & Private",
-      description: "Your grievances are handled with complete confidentiality and security."
+      description:
+        "Your grievances are handled with complete confidentiality and security.",
     },
     {
       icon: <Zap className="w-8 h-8 text-green-600" />,
       title: "AI-Powered",
-      description: "Smart formatting and processing to ensure your concerns are clearly communicated."
+      description:
+        "Smart formatting and processing to ensure your concerns are clearly communicated.",
     },
     {
       icon: <Users className="w-8 h-8 text-purple-600" />,
       title: "Role-Based Access",
-      description: "Separate interfaces for users and administrators for streamlined workflow."
+      description:
+        "Separate interfaces for users and administrators for streamlined workflow.",
     },
     {
       icon: <CheckCircle className="w-8 h-8 text-emerald-600" />,
       title: "Real-time Tracking",
-      description: "Monitor the status of your grievances from submission to resolution."
-    }
+      description:
+        "Monitor the status of your grievances from submission to resolution.",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <Navbar navigate={navigate} />
-      
+
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
@@ -39,10 +43,10 @@ const Home = ({ navigate }) => {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-            Your comprehensive grievance management system designed to streamline 
-            communication and ensure every voice is heard.
+            Your comprehensive grievance management system designed to
+            streamline communication and ensure every voice is heard.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => navigate("/signup")}
@@ -51,7 +55,7 @@ const Home = ({ navigate }) => {
               <span>Get Started</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            
+
             <button
               onClick={() => navigate("/login")}
               className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 font-semibold text-lg"
@@ -69,8 +73,8 @@ const Home = ({ navigate }) => {
             Why Choose Civix?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Built with modern technology and user experience in mind, Civix provides 
-            a seamless platform for managing grievances efficiently.
+            Built with modern technology and user experience in mind, Civix
+            provides a seamless platform for managing grievances efficiently.
           </p>
         </div>
 
@@ -101,7 +105,8 @@ const Home = ({ navigate }) => {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who trust Civix for their grievance management needs.
+            Join thousands of users who trust Civix for their grievance
+            management needs.
           </p>
           <button
             onClick={() => navigate("/signup")}
@@ -122,7 +127,8 @@ const Home = ({ navigate }) => {
             <span className="text-xl font-bold">Civix</span>
           </div>
           <p className="text-gray-400">
-            © 2025 Civix. All rights reserved. Built with care for better communication.
+            © 2025 Civix. All rights reserved. Built with care for better
+            communication.
           </p>
         </div>
       </footer>

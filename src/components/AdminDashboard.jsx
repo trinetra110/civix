@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { grievanceService } from "../services/grievances";
 import AdminGrievanceList from "./AdminGrievanceList";
-import { Activity, Clock, CheckCircle, XCircle, FileText, TrendingUp } from "lucide-react";
+import {
+  Activity,
+  Clock,
+  CheckCircle,
+  XCircle,
+  FileText,
+  TrendingUp,
+} from "lucide-react";
 
 const AdminDashboard = () => {
   const [activeGrievances, setActiveGrievances] = useState([]);
@@ -49,10 +56,16 @@ const AdminDashboard = () => {
   const getOverallStats = () => {
     const allGrievances = [...activeGrievances, ...pastGrievances];
     const total = allGrievances.length;
-    const pending = allGrievances.filter(g => g.status === "Pending").length;
-    const inProgress = allGrievances.filter(g => g.status === "InProgress").length;
-    const resolved = allGrievances.filter(g => g.status === "Resolved").length;
-    const rejected = allGrievances.filter(g => g.status === "Rejected").length;
+    const pending = allGrievances.filter((g) => g.status === "Pending").length;
+    const inProgress = allGrievances.filter(
+      (g) => g.status === "InProgress"
+    ).length;
+    const resolved = allGrievances.filter(
+      (g) => g.status === "Resolved"
+    ).length;
+    const rejected = allGrievances.filter(
+      (g) => g.status === "Rejected"
+    ).length;
 
     return { total, pending, inProgress, resolved, rejected };
   };
@@ -74,8 +87,12 @@ const AdminDashboard = () => {
     <div>
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Admin Dashboard</h2>
-        <p className="text-gray-600">Manage and track all grievances across the system</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          Admin Dashboard
+        </h2>
+        <p className="text-gray-600">
+          Manage and track all grievances across the system
+        </p>
       </div>
 
       {/* Stats Overview */}
@@ -84,7 +101,9 @@ const AdminDashboard = () => {
           <div className="flex items-center space-x-3">
             <FileText className="w-8 h-8 text-purple-600" />
             <div>
-              <p className="text-2xl font-bold text-purple-900">{stats.total}</p>
+              <p className="text-2xl font-bold text-purple-900">
+                {stats.total}
+              </p>
               <p className="text-purple-700 text-sm font-medium">Total</p>
             </div>
           </div>
@@ -94,7 +113,9 @@ const AdminDashboard = () => {
           <div className="flex items-center space-x-3">
             <Clock className="w-8 h-8 text-yellow-600" />
             <div>
-              <p className="text-2xl font-bold text-yellow-900">{stats.pending}</p>
+              <p className="text-2xl font-bold text-yellow-900">
+                {stats.pending}
+              </p>
               <p className="text-yellow-700 text-sm font-medium">Pending</p>
             </div>
           </div>
@@ -104,7 +125,9 @@ const AdminDashboard = () => {
           <div className="flex items-center space-x-3">
             <Activity className="w-8 h-8 text-blue-600" />
             <div>
-              <p className="text-2xl font-bold text-blue-900">{stats.inProgress}</p>
+              <p className="text-2xl font-bold text-blue-900">
+                {stats.inProgress}
+              </p>
               <p className="text-blue-700 text-sm font-medium">In Progress</p>
             </div>
           </div>
@@ -114,7 +137,9 @@ const AdminDashboard = () => {
           <div className="flex items-center space-x-3">
             <CheckCircle className="w-8 h-8 text-green-600" />
             <div>
-              <p className="text-2xl font-bold text-green-900">{stats.resolved}</p>
+              <p className="text-2xl font-bold text-green-900">
+                {stats.resolved}
+              </p>
               <p className="text-green-700 text-sm font-medium">Resolved</p>
             </div>
           </div>
@@ -124,7 +149,9 @@ const AdminDashboard = () => {
           <div className="flex items-center space-x-3">
             <XCircle className="w-8 h-8 text-red-600" />
             <div>
-              <p className="text-2xl font-bold text-red-900">{stats.rejected}</p>
+              <p className="text-2xl font-bold text-red-900">
+                {stats.rejected}
+              </p>
               <p className="text-red-700 text-sm font-medium">Rejected</p>
             </div>
           </div>
@@ -140,8 +167,12 @@ const AdminDashboard = () => {
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900">Active Grievances</h3>
-              <p className="text-gray-600 text-sm">Requires immediate attention</p>
+              <h3 className="text-xl font-bold text-gray-900">
+                Active Grievances
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Requires immediate attention
+              </p>
             </div>
             <div className="ml-auto">
               <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -163,8 +194,12 @@ const AdminDashboard = () => {
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900">Completed Grievances</h3>
-              <p className="text-gray-600 text-sm">Resolved or rejected cases</p>
+              <h3 className="text-xl font-bold text-gray-900">
+                Completed Grievances
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Resolved or rejected cases
+              </p>
             </div>
             <div className="ml-auto">
               <span className="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold">

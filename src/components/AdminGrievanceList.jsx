@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { userService } from "../services/users";
-import { 
-  ChevronDown, 
-  ChevronUp, 
-  User, 
-  Mail, 
-  Calendar, 
-  Clock, 
-  FileText, 
+import {
+  ChevronDown,
+  ChevronUp,
+  User,
+  Mail,
+  Calendar,
+  Clock,
+  FileText,
   ExternalLink,
   CheckCircle,
   XCircle,
   Play,
-  AlertCircle
+  AlertCircle,
 } from "lucide-react";
 
 const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
@@ -52,31 +52,31 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
         return {
           color: "bg-yellow-100 text-yellow-800 border-yellow-200",
           icon: <Clock className="w-4 h-4" />,
-          gradient: "from-yellow-50 to-yellow-100"
+          gradient: "from-yellow-50 to-yellow-100",
         };
       case "InProgress":
         return {
           color: "bg-blue-100 text-blue-800 border-blue-200",
           icon: <Play className="w-4 h-4" />,
-          gradient: "from-blue-50 to-blue-100"
+          gradient: "from-blue-50 to-blue-100",
         };
       case "Resolved":
         return {
           color: "bg-green-100 text-green-800 border-green-200",
           icon: <CheckCircle className="w-4 h-4" />,
-          gradient: "from-green-50 to-green-100"
+          gradient: "from-green-50 to-green-100",
         };
       case "Rejected":
         return {
           color: "bg-red-100 text-red-800 border-red-200",
           icon: <XCircle className="w-4 h-4" />,
-          gradient: "from-red-50 to-red-100"
+          gradient: "from-red-50 to-red-100",
         };
       default:
         return {
           color: "bg-gray-100 text-gray-800 border-gray-200",
           icon: <AlertCircle className="w-4 h-4" />,
-          gradient: "from-gray-50 to-gray-100"
+          gradient: "from-gray-50 to-gray-100",
         };
     }
   };
@@ -85,12 +85,24 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
     switch (currentStatus) {
       case "Pending":
         return [
-          { status: "InProgress", label: "Start Processing", color: "bg-blue-600 hover:bg-blue-700" },
-          { status: "Rejected", label: "Reject", color: "bg-red-600 hover:bg-red-700" }
+          {
+            status: "InProgress",
+            label: "Start Processing",
+            color: "bg-blue-600 hover:bg-blue-700",
+          },
+          {
+            status: "Rejected",
+            label: "Reject",
+            color: "bg-red-600 hover:bg-red-700",
+          },
         ];
       case "InProgress":
         return [
-          { status: "Resolved", label: "Mark Resolved", color: "bg-green-600 hover:bg-green-700" }
+          {
+            status: "Resolved",
+            label: "Mark Resolved",
+            color: "bg-green-600 hover:bg-green-700",
+          },
         ];
       default:
         return [];
@@ -105,7 +117,9 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
         </div>
         <p className="text-gray-600 font-medium">No grievances found</p>
         <p className="text-gray-500 text-sm mt-1">
-          {isEditable ? "All caught up! No active grievances to review." : "No completed grievances yet."}
+          {isEditable
+            ? "All caught up! No active grievances to review."
+            : "No completed grievances yet."}
         </p>
       </div>
     );
@@ -116,15 +130,17 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
       {grievances.map((grievance) => {
         const statusConfig = getStatusConfig(grievance.status);
         const isExpanded = expandedGrievance === grievance.$id;
-        
+
         return (
           <div
             key={grievance.$id}
             className="bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 overflow-hidden"
           >
             {/* Status Bar */}
-            <div className={`h-1 bg-gradient-to-r ${statusConfig.gradient}`}></div>
-            
+            <div
+              className={`h-1 bg-gradient-to-r ${statusConfig.gradient}`}
+            ></div>
+
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <div className="flex-1">
@@ -135,7 +151,9 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
                     ID: {grievance.$id}
                   </p>
                 </div>
-                <div className={`flex items-center space-x-2 px-3 py-2 rounded-xl border font-medium text-sm ${statusConfig.color}`}>
+                <div
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl border font-medium text-sm ${statusConfig.color}`}
+                >
                   {statusConfig.icon}
                   <span>{grievance.status}</span>
                 </div>
@@ -151,31 +169,43 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
                   <div className="flex items-center space-x-2">
                     <Calendar className="w-4 h-4" />
                     <span>
-                      {new Date(grievance.submittedAt).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
+                      {new Date(grievance.submittedAt).toLocaleDateString(
+                        "en-US",
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        }
+                      )}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Clock className="w-4 h-4" />
                     <span>
-                      {new Date(grievance.lastUpdated).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                      })}
+                      {new Date(grievance.lastUpdated).toLocaleDateString(
+                        "en-US",
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        }
+                      )}
                     </span>
                   </div>
                 </div>
 
                 <button
-                  onClick={() => toggleExpanded(grievance.$id, grievance.userId)}
+                  onClick={() =>
+                    toggleExpanded(grievance.$id, grievance.userId)
+                  }
                   className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors"
                 >
                   <span>{isExpanded ? "Show Less" : "View Details"}</span>
-                  {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  {isExpanded ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
                 </button>
               </div>
 
@@ -201,9 +231,13 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
                             <span>{userDetails[grievance.userId].email}</span>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <span className="w-4 h-4 text-gray-500 font-mono text-xs">#</span>
+                            <span className="w-4 h-4 text-gray-500 font-mono text-xs">
+                              #
+                            </span>
                             <span className="font-medium">User ID:</span>
-                            <span className="font-mono text-xs">{grievance.userId}</span>
+                            <span className="font-mono text-xs">
+                              {grievance.userId}
+                            </span>
                           </div>
                         </div>
                       ) : (
@@ -222,19 +256,27 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
                       </h4>
                       <div className="space-y-2 text-sm">
                         <div className="flex items-center space-x-2">
-                          <div className={`w-3 h-3 rounded-full ${statusConfig.color.split(' ')[0]}`}></div>
+                          <div
+                            className={`w-3 h-3 rounded-full ${
+                              statusConfig.color.split(" ")[0]
+                            }`}
+                          ></div>
                           <span className="font-medium">Status:</span>
                           <span>{grievance.status}</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Calendar className="w-4 h-4 text-gray-500" />
                           <span className="font-medium">Submitted:</span>
-                          <span>{new Date(grievance.submittedAt).toLocaleString()}</span>
+                          <span>
+                            {new Date(grievance.submittedAt).toLocaleString()}
+                          </span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Clock className="w-4 h-4 text-gray-500" />
                           <span className="font-medium">Last Updated:</span>
-                          <span>{new Date(grievance.lastUpdated).toLocaleString()}</span>
+                          <span>
+                            {new Date(grievance.lastUpdated).toLocaleString()}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -242,7 +284,9 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
 
                   {/* Full Description */}
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Full Description</h4>
+                    <h4 className="font-semibold text-gray-900 mb-3">
+                      Full Description
+                    </h4>
                     <div className="bg-gray-50 rounded-xl p-4">
                       <pre className="whitespace-pre-wrap text-sm text-gray-800 leading-relaxed">
                         {grievance.description}
@@ -278,22 +322,32 @@ const AdminGrievanceList = ({ grievances, onStatusUpdate, isEditable }) => {
                   )}
 
                   {/* Status Update Actions */}
-                  {isEditable && getValidTransitions(grievance.status).length > 0 && (
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Update Status</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {getValidTransitions(grievance.status).map((transition) => (
-                          <button
-                            key={transition.status}
-                            onClick={() => onStatusUpdate(grievance.$id, transition.status)}
-                            className={`px-4 py-2 rounded-lg text-white font-medium transition-colors ${transition.color} shadow-md hover:shadow-lg`}
-                          >
-                            {transition.label}
-                          </button>
-                        ))}
+                  {isEditable &&
+                    getValidTransitions(grievance.status).length > 0 && (
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-3">
+                          Update Status
+                        </h4>
+                        <div className="flex flex-wrap gap-3">
+                          {getValidTransitions(grievance.status).map(
+                            (transition) => (
+                              <button
+                                key={transition.status}
+                                onClick={() =>
+                                  onStatusUpdate(
+                                    grievance.$id,
+                                    transition.status
+                                  )
+                                }
+                                className={`px-4 py-2 rounded-lg text-white font-medium transition-colors ${transition.color} shadow-md hover:shadow-lg`}
+                              >
+                                {transition.label}
+                              </button>
+                            )
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
                 </div>
               )}
             </div>

@@ -33,10 +33,12 @@ const UserDashboard = () => {
 
   const getStats = () => {
     const total = grievances.length;
-    const pending = grievances.filter(g => g.status === "Pending").length;
-    const inProgress = grievances.filter(g => g.status === "InProgress").length;
-    const resolved = grievances.filter(g => g.status === "Resolved").length;
-    const rejected = grievances.filter(g => g.status === "Rejected").length;
+    const pending = grievances.filter((g) => g.status === "Pending").length;
+    const inProgress = grievances.filter(
+      (g) => g.status === "InProgress"
+    ).length;
+    const resolved = grievances.filter((g) => g.status === "Resolved").length;
+    const rejected = grievances.filter((g) => g.status === "Rejected").length;
 
     return { total, pending, inProgress, resolved, rejected };
   };
@@ -48,8 +50,12 @@ const UserDashboard = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">My Grievances</h2>
-          <p className="text-gray-600">Track and manage your submitted grievances</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            My Grievances
+          </h2>
+          <p className="text-gray-600">
+            Track and manage your submitted grievances
+          </p>
         </div>
         <button
           onClick={() => setShowForm(true)}
@@ -76,7 +82,9 @@ const UserDashboard = () => {
           <div className="flex items-center space-x-3">
             <Clock className="w-8 h-8 text-yellow-600" />
             <div>
-              <p className="text-2xl font-bold text-yellow-900">{stats.pending}</p>
+              <p className="text-2xl font-bold text-yellow-900">
+                {stats.pending}
+              </p>
               <p className="text-yellow-700 text-sm font-medium">Pending</p>
             </div>
           </div>
@@ -88,7 +96,9 @@ const UserDashboard = () => {
               <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
             </div>
             <div>
-              <p className="text-2xl font-bold text-blue-900">{stats.inProgress}</p>
+              <p className="text-2xl font-bold text-blue-900">
+                {stats.inProgress}
+              </p>
               <p className="text-blue-700 text-sm font-medium">In Progress</p>
             </div>
           </div>
@@ -98,7 +108,9 @@ const UserDashboard = () => {
           <div className="flex items-center space-x-3">
             <CheckCircle className="w-8 h-8 text-green-600" />
             <div>
-              <p className="text-2xl font-bold text-green-900">{stats.resolved}</p>
+              <p className="text-2xl font-bold text-green-900">
+                {stats.resolved}
+              </p>
               <p className="text-green-700 text-sm font-medium">Resolved</p>
             </div>
           </div>
@@ -108,7 +120,9 @@ const UserDashboard = () => {
           <div className="flex items-center space-x-3">
             <XCircle className="w-8 h-8 text-red-600" />
             <div>
-              <p className="text-2xl font-bold text-red-900">{stats.rejected}</p>
+              <p className="text-2xl font-bold text-red-900">
+                {stats.rejected}
+              </p>
               <p className="text-red-700 text-sm font-medium">Rejected</p>
             </div>
           </div>
@@ -128,7 +142,9 @@ const UserDashboard = () => {
         <div className="flex justify-center py-12">
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-600 font-medium">Loading your grievances...</p>
+            <p className="text-gray-600 font-medium">
+              Loading your grievances...
+            </p>
           </div>
         </div>
       ) : (

@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
-import { Mail, Lock, User, Eye, EyeOff, AlertCircle, UserCheck } from "lucide-react";
+import {
+  Mail,
+  Lock,
+  User,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  UserCheck,
+} from "lucide-react";
 
 const Signup = ({ navigate }) => {
   const { signup, loginWithGoogle } = useAuth();
@@ -50,7 +58,7 @@ const Signup = ({ navigate }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-100">
       <Navbar navigate={navigate} />
-      
+
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
@@ -58,8 +66,12 @@ const Signup = ({ navigate }) => {
               <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold text-2xl">C</span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Join Civix</h2>
-              <p className="text-gray-600">Create your account to get started</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                Join Civix
+              </h2>
+              <p className="text-gray-600">
+                Create your account to get started
+              </p>
             </div>
 
             {error && (
@@ -169,7 +181,11 @@ const Signup = ({ navigate }) => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -187,7 +203,9 @@ const Signup = ({ navigate }) => {
                     }
                     className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 appearance-none bg-white"
                   >
-                    <option value="user">User - Submit and track grievances</option>
+                    <option value="user">
+                      User - Submit and track grievances
+                    </option>
                     <option value="admin">Admin - Manage all grievances</option>
                   </select>
                 </div>

@@ -2,7 +2,15 @@ import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { grievanceService } from "../services/grievances";
 import { aiService } from "../services/ai";
-import { X, Upload, Sparkles, Send, ArrowLeft, FileText, AlertCircle } from "lucide-react";
+import {
+  X,
+  Upload,
+  Sparkles,
+  Send,
+  ArrowLeft,
+  FileText,
+  AlertCircle,
+} from "lucide-react";
 
 const GrievanceForm = ({ onClose, onSubmit }) => {
   const { user } = useAuth();
@@ -38,7 +46,7 @@ const GrievanceForm = ({ onClose, onSubmit }) => {
       setShowAiSuggestion(true);
     } catch (error) {
       console.error("AI API Error:", error);
-      
+
       setAiSuggestion(`FORMAL COMPLAINT
 
 Subject: ${formData.title}
@@ -149,8 +157,12 @@ I hereby formally submit this complaint for your consideration and request appro
                   >
                     <Upload className="w-8 h-8 text-gray-400" />
                     <div className="text-center">
-                      <p className="text-gray-600 font-medium">Click to upload files</p>
-                      <p className="text-sm text-gray-500">PDF, DOC, DOCX, JPG, PNG (Max 5 files)</p>
+                      <p className="text-gray-600 font-medium">
+                        Click to upload files
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        PDF, DOC, DOCX, JPG, PNG (Max 5 files)
+                      </p>
                     </div>
                   </label>
                 </div>
@@ -159,10 +171,15 @@ I hereby formally submit this complaint for your consideration and request appro
                 {files.length > 0 && (
                   <div className="mt-4 space-y-2">
                     {files.map((file, index) => (
-                      <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between bg-gray-50 p-3 rounded-lg"
+                      >
                         <div className="flex items-center space-x-3">
                           <FileText className="w-5 h-5 text-gray-500" />
-                          <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                          <span className="text-sm text-gray-700 truncate">
+                            {file.name}
+                          </span>
                         </div>
                         <button
                           onClick={() => removeFile(index)}
@@ -195,10 +212,12 @@ I hereby formally submit this complaint for your consideration and request appro
                     </>
                   )}
                 </button>
-                
+
                 <button
                   onClick={() => submitGrievance(false)}
-                  disabled={submitting || !formData.title || !formData.description}
+                  disabled={
+                    submitting || !formData.title || !formData.description
+                  }
                   className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl hover:from-blue-700 hover:to-blue-800 disabled:opacity-50 transition-all duration-200 font-semibold flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                 >
                   {submitting ? (
@@ -221,10 +240,13 @@ I hereby formally submit this complaint for your consideration and request appro
               <div className="bg-green-50 border border-green-200 rounded-xl p-4">
                 <div className="flex items-center space-x-2 mb-2">
                   <Sparkles className="w-5 h-5 text-green-600" />
-                  <h4 className="font-semibold text-green-800">AI-Enhanced Version</h4>
+                  <h4 className="font-semibold text-green-800">
+                    AI-Enhanced Version
+                  </h4>
                 </div>
                 <p className="text-green-700 text-sm">
-                  Your grievance has been formatted for better clarity and professionalism.
+                  Your grievance has been formatted for better clarity and
+                  professionalism.
                 </p>
               </div>
 
@@ -249,7 +271,7 @@ I hereby formally submit this complaint for your consideration and request appro
                   <ArrowLeft className="w-5 h-5" />
                   <span>Back to Edit</span>
                 </button>
-                
+
                 <button
                   onClick={() => submitGrievance(false)}
                   disabled={submitting}
@@ -267,7 +289,7 @@ I hereby formally submit this complaint for your consideration and request appro
                     </>
                   )}
                 </button>
-                
+
                 <button
                   onClick={() => submitGrievance(true)}
                   disabled={submitting}
