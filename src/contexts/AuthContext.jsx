@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }) => {
       await authService.logout();
       setUser(null);
       localStorage.removeItem("civix-user");
-      localStorage.removeItem("civix-oauth-role"); // Clean up OAuth role if exists
     } catch (error) {
       console.error("Logout error:", error);
     }
