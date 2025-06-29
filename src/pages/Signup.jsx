@@ -45,12 +45,14 @@ const Signup = ({ navigate }) => {
     
     // Store the selected role in localStorage for the OAuth callback
     localStorage.setItem("civix-oauth-role", selectedRole);
+    console.log("Stored OAuth role for signup:", selectedRole);
     
     const result = await loginWithGoogle();
     if (!result.success) {
       setError(result.error);
       setGoogleLoading(false);
       setShowRoleSelection(false);
+      localStorage.removeItem("civix-oauth-role");
     }
     // Note: If successful, the page will redirect to Google OAuth
   };
@@ -58,6 +60,7 @@ const Signup = ({ navigate }) => {
   const cancelRoleSelection = () => {
     setShowRoleSelection(false);
     setSelectedRole("user");
+    localStorage.removeItem("civix-oauth-role");
   };
 
   if (showRoleSelection) {

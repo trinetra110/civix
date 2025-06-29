@@ -51,6 +51,13 @@ export const authService = {
         // Get the role from localStorage (set during OAuth initiation)
         const selectedRole = localStorage.getItem("civix-oauth-role") || "user";
         
+        console.log("Creating new user document for OAuth user:", {
+          userId: currentUser.$id,
+          name: currentUser.name,
+          email: currentUser.email,
+          role: selectedRole
+        });
+
         await databases.createDocument(
           DATABASE_ID,
           USERS_COLLECTION_ID,
@@ -63,12 +70,19 @@ export const authService = {
           }
         );
 
+        console.log("User document created successfully");
+        
         // Clean up the stored role
+        localStorage.removeItem("civix-oauth-role");
+      } else {
+        console.log("User document already exists:", response.documents[0]);
+        // Clean up the stored role even if user exists
         localStorage.removeItem("civix-oauth-role");
       }
 
       return { success: true, user: currentUser };
     } catch (error) {
+      console.error("OAuth callback error:", error);
       // Clean up the stored role on error
       localStorage.removeItem("civix-oauth-role");
       return { success: false, error: error.message };

@@ -3,34 +3,13 @@ import { useAuth } from "../contexts/AuthContext";
 import Navbar from "../components/Navbar";
 
 const Login = ({ navigate }) => {
-  const { login, loginWithGoogle, handleOAuthCallback } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [showRoleSelection, setShowRoleSelection] = useState(false);
   const [selectedRole, setSelectedRole] = useState("user");
-
-  useEffect(() => {
-    // Check if this is an OAuth callback
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true' || window.location.pathname === '/dashboard') {
-      handleOAuthSuccess();
-    }
-  }, []);
-
-  const handleOAuthSuccess = async () => {
-    try {
-      const result = await handleOAuthCallback();
-      if (result.success) {
-        navigate("/dashboard");
-      } else {
-        setError("Google authentication failed. Please try again.");
-      }
-    } catch (error) {
-      setError("Google authentication failed. Please try again.");
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,12 +35,14 @@ const Login = ({ navigate }) => {
     
     // Store the selected role in localStorage for the OAuth callback
     localStorage.setItem("civix-oauth-role", selectedRole);
+    console.log("Stored OAuth role:", selectedRole);
     
     const result = await loginWithGoogle();
     if (!result.success) {
       setError(result.error);
       setGoogleLoading(false);
       setShowRoleSelection(false);
+      localStorage.removeItem("civix-oauth-role");
     }
     // Note: If successful, the page will redirect to Google OAuth
   };
@@ -69,6 +50,7 @@ const Login = ({ navigate }) => {
   const cancelRoleSelection = () => {
     setShowRoleSelection(false);
     setSelectedRole("user");
+    localStorage.removeItem("civix-oauth-role");
   };
 
   if (showRoleSelection) {
