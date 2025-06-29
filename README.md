@@ -5,7 +5,7 @@ A modern, full-stack grievance management system built with React, Appwrite, and
 ## Features
 
 ### Authentication
-- Email/password authentication with Appwrite
+- Email/password and Google authentication with Appwrite
 - Role-based access (User/Admin)
 - Persistent login sessions
 - Protected routes
@@ -38,13 +38,11 @@ A modern, full-stack grievance management system built with React, Appwrite, and
 2. Submit grievances with title, description, and optional file attachments
 3. Use AI formatting to improve description quality
 4. Track status updates in your dashboard
-5. Receive email notifications for status changes
 
 ### For Admins
-1. Register with "Admin" role
+1. Register with email/password (select "Admin" role)
 2. View all grievances in organized active/past sections
 3. Update grievance status with proper workflow validation
-4. Users automatically receive email notifications
 
 ## Status Workflow
 
@@ -61,7 +59,6 @@ src/
 ├── contexts/           # React context providers
 ├── pages/              # Page components
 ├── services/           # API service layers
-├── types/              # TypeScript type definitions
 └── App.jsx            # Main application component
 ```
 
