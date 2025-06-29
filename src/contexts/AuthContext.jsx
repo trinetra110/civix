@@ -43,6 +43,19 @@ export const AuthProvider = ({ children }) => {
     return result;
   };
 
+  const loginWithGoogle = async () => {
+    return await authService.loginWithGoogle();
+  };
+
+  const handleOAuthCallback = async () => {
+    const result = await authService.handleOAuthCallback();
+    if (result.success) {
+      setUser(result.user);
+      localStorage.setItem("civix-user", JSON.stringify(result.user));
+    }
+    return result;
+  };
+
   const signup = async (email, password, name, role) => {
     const result = await authService.signup(email, password, name, role);
     if (result.success) {
@@ -65,6 +78,8 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     login,
+    loginWithGoogle,
+    handleOAuthCallback,
     signup,
     logout,
     loading,

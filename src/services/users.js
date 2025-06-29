@@ -7,9 +7,9 @@ export const userService = {
       const response = await databases.listDocuments(
         DATABASE_ID,
         USERS_COLLECTION_ID,
-        [Query.equal('userId', userId)]
+        [Query.equal("userId", userId)]
       );
-      
+
       if (response.documents.length > 0) {
         return response.documents[0].role;
       }
@@ -24,9 +24,9 @@ export const userService = {
       const response = await databases.listDocuments(
         DATABASE_ID,
         USERS_COLLECTION_ID,
-        [Query.equal('userId', userId)]
+        [Query.equal("userId", userId)]
       );
-      
+
       if (response.documents.length > 0) {
         return response.documents[0];
       }
@@ -34,5 +34,5 @@ export const userService = {
     } catch (error) {
       throw error;
     }
-  }
+  },
 };
