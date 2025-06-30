@@ -2,6 +2,17 @@
 
 A modern, full-stack grievance management system built with React, Appwrite, and AI integration.
 
+## Demo
+
+### User 1
+https://github.com/user-attachments/assets/741a23f6-120b-4f3e-8748-cd95f0c30623
+
+### User 2
+https://github.com/user-attachments/assets/0880ea6e-34ba-4143-8fc4-32c687ddd35e
+
+### Admin
+https://github.com/user-attachments/assets/fcdbbbf9-f4b0-4828-9a85-f79f349081b8
+
 ## Features
 
 ### Authentication
